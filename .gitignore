@@ -1,0 +1,29 @@
+# Môi trường ảo Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Dữ liệu & Storage (Không đẩy file data nặng lên Git)
+data/
+*.csv
+*.parquet
+
+# Dữ liệu nội bộ của Docker Volumes
+pg_data/
+minio_data/
+
+# Thông tin bí mật & biến môi trường
+.env
+
+# Hệ điều hành & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# dbt artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
