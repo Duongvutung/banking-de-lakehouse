@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # 1. Banking Data Warehouse (PostgreSQL)
   postgres_dwh:
@@ -17,26 +15,8 @@ services:
     networks:
       - banking_net
 
-  # 2. Banking Object Storage / Data Lake (MinIO - AWS S3 compatible)
-  minio_lake:
-    image: minio/minio:latest
-    container_name: banking_minio_lake
-    restart: always
-    command: server /data --console-address ":9001"
-    environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-bank_minio_admin}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-bank_minio_password}
-    ports:
-      - "${MINIO_PORT_API:-9000}:9000"
-      - "${MINIO_PORT_CONSOLE:-9001}:9001"
-    volumes:
-      - minio_data:/data
-    networks:
-      - banking_net
-
 volumes:
   pg_data:
-  minio_data:
 
 networks:
   banking_net:
